@@ -1,0 +1,38 @@
+      <h2 class="text-center">Araç detayları</h2>
+       <div class="row image-section">
+        <div *ngFor="let image of carImages">
+          <img
+            [src]="getImagePath(image.imagePath)"
+            class="img-fluid"
+            [alt]="getImagePath(image.imagePath)"
+          /> 
+        </div> 
+      </div> 
+      <!-- <img src = "https://localhost:44392/Images/Car/3f6446116f7240209be4b062df23d5d2-21-3-2021.jpg"/> -->
+      <table class="table">
+             
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Araç Adı</th>
+                <th>Marka</th>
+                <th>Renk</th>
+                <th>Günlük Fiyatı</th>
+                <th>Model Yılı</th>
+                <th>Açıklama</th>
+            </tr>
+        </thead>
+        <tr *ngIf="carDetails"   >
+         <td>{{carDetails.carId}}</td>
+          <td>{{carDetails.carName}}</td>
+          <td>{{carDetails.brandName}}</td>
+          <td>{{carDetails.colorName}}</td>
+          <td>{{carDetails.dailyPrice}}</td>
+          <td>{{carDetails.modelYear}}</td>
+          <td>{{carDetails.description}}</td>
+        </tr>
+        </table>
+   
+           
+
+          

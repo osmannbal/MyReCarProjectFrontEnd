@@ -2,16 +2,18 @@
     <span class="visually-hidden">Loading...</span>
   </div> -->
   
-<h2 class="text-center">Markalar</h2>
-  <table class="table">
-      <thead>
-          <tr>
-              <th>Id</th>
-              <th>Marka Adı</th>
-          </tr>
-      </thead>
-      <tr *ngFor="let brand of brands">
-          <td>{{brand.brandId}}</td>
-          <td>{{brand.brandName}}</td>
-      </tr>
-  </table>
+
+  <ul class="list-group">
+      <li (click)="clearCurrent()"
+        [class]="getAllBrandClass()"
+        routerLink="/cars">
+      Tüm Arabalar</li>
+      <li (click)="setCurrentBrand(brand)"
+      routerLink="cars/brand/{{brand.brandId}}"
+      *ngFor="let brand of brands"
+      [class]="getCurrentBrandClass(brand)">
+    {{brand.brandName}}</li>
+  </ul>
+
+  <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>
+  <h5 *ngIf="!currentBrand">Tüm arabaları seçtiniz</h5>

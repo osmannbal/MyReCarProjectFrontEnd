@@ -2,14 +2,18 @@
     <span class="visually-hidden">Loading...</span>
   </div> -->
   
-<h2 class="text-center">Renkler</h2>
-<table class="table">
-    <thead>
-        <th>Id</th>
-        <th>Renk Adı</th>
-    </thead>
-    <tr *ngFor="let color of colors">
-        <td>{{color.colorId}}</td>
-        <td>{{color.colorName}}</td>
-    </tr>
-</table>
+<ul class="list-group">
+    <li (click)="clearCurrentColor()"
+    [class]="getAllColorClass()"
+    routerLink="/cars">
+    Tüm arabalar</li>
+    <li (click)="setCurrentColor(color)"
+    routerLink="cars/color/{{color.colorId}}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColorClass(color)">
+  {{color.colorName}}</li>
+</ul>
+
+
+<h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz</h5>
+<h5 *ngIf="!currentColor">Tüm arabaları seçtiniz</h5>
