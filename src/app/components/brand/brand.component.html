@@ -9,11 +9,15 @@
         routerLink="/cars" class="btn btn-warning">
       Tüm Arabalar</li>
       <li (click)="setCurrentBrand(brand)"
-      routerLink="cars/brand/{{brand.brandId}}"
       *ngFor="let brand of brands"
-      [class]="getCurrentBrandClass(brand)">
+      routerLink="cars/brand/{{brand.brandId}}"
+      [class]="getCurrentBrandClass(brand)"
+      class="card-body">
+        <button routerLink="/brands/update/{{ brand.brandId }}" type="button" class="btn btn-light">Düzenle</button> 
+      
     {{brand.brandName}}</li>
+   
   </ul>
-
+  
   <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>
   <h5 *ngIf="!currentBrand">Tüm arabaları seçtiniz</h5>

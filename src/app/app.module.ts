@@ -31,6 +31,7 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrandUpdateComponent,
     RentalAddComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

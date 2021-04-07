@@ -1,0 +1,24 @@
+<div class="card border-warning">
+    <h5 class="card-header">Profili Düzenle</h5>
+    <div class="card-body">
+      <form [formGroup]="userUpdateForm">
+        <div class="mb-3">
+          <label class="form-label">Ad</label>
+          <input id="firstName" formControlName="firstName" type="text" class="form-control" />
+        </div> 
+        <div class="mb-3">
+          <label class="form-label">Soyad</label>
+          <input id="lastName" formControlName="lastName" type="text" class="form-control" />
+        </div> 
+        <div class="mb-3">
+            <label class="form-label">E-mail</label>
+            <input id="email" formControlName="email" type="text" class="form-control" />
+          </div> 
+  
+
+        <div class="mb-3">
+            <button (click)="update()" type="button" class="btn btn-danger">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>

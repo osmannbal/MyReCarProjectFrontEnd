@@ -36,16 +36,16 @@
       <td>{{ carDetails.dailyPrice }}</td>
       <td>{{ carDetails.modelYear }}</td>
       <td>{{ carDetails.description }}</td></tr>
-      <!-- <td *ngIf="checkAvailability() == false">Araç Kiralanmış</td> -->
-     
-        <button
+      <!-- <td *ngIf="!checkAvailability()">Araç Kiralanmış</td> -->
+     <td>
+        <button 
           routerLink="/cars/car-detail/:carId/payments"
           type="button"
           class="btn btn-danger"
         >
           Kirala
         </button>
- 
+      </td>
     
   </tbody>
 </table>

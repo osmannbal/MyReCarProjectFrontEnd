@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
@@ -24,20 +25,28 @@ export class CarUpdateComponent implements OnInit {
   colors: Color[];
   colorId: number;
   brandId: number;
+  brandName:any;
+  colorName:any;
   cars:Car;
-  // carForUpdate:Car;
   constructor(
     private formBuilder: FormBuilder,
     private carService: CarService,
     private toastrService: ToastrService,
     private brandService: BrandService,
     private colorService: ColorService,
+    private activatedRoute:ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      if(params["carId"]){
         this.getBrands();
         this.getColors();
         this.createCarUpdateForm();
+        this.getCarDetailsByCarId(params["carId"])
+      }
+    })
+        
       }
     
   getCarDetailsByCarId(carId: number) {
@@ -71,18 +80,8 @@ export class CarUpdateComponent implements OnInit {
     });
   }
 
-  // getCarById(carId:number) {
-  //   this.carService.getCarById(carId).subscribe((response) => {
-  //     this.carUpdateForm.get('carId')?.setValue(response.data.carId);
-  //     this.carUpdateForm.get('brandId')?.setValue(response.data.brandId);
-  //     this.carUpdateForm.get('colorId')?.setValue(response.data.colorId);
-  //     this.carUpdateForm.get('description')?.setValue(response.data.description);
-  //     this.carUpdateForm.get('dailyPrice')?.setValue(response.data.dailyPrice);
-  //     this.carUpdateForm.get('modelYear')?.setValue(response.data.modelYear);
-  //   });
-  // }
-
-  update() {
+  update(){
+    this.carUpdateForm.patchValue({ carId: this.cars.carId})
     if (this.carUpdateForm.valid) {
       let carUpdate = Object.assign({}, this.carUpdateForm.value);
       // carUpdate.carId = this.cars.carId

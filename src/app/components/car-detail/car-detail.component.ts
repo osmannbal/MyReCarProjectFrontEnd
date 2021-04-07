@@ -37,6 +37,8 @@ export class CarDetailComponent implements OnInit {
       }
       else if(params["image"]){
         this.getImagePath(params["image"])
+      }else{
+        this.checkAvailability();
       }
       
     })

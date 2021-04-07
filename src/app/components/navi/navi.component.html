@@ -12,16 +12,29 @@
           <li class="nav-item">
             <a class="nav-link active" routerLink="/rentalDetails" aria-current="page" href="#">Kiralamalar</a>
           </li>
-          <li class="nav-item dropdown">
+          <li *ngIf="!isAuthenticated()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Giriş
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a routerLink="/login" class="dropdown-item" href="#">Giriş yap</a></li>
               <li><a routerLink="/register" class="dropdown-item" href="#">Kayıt ol</a></li>
             </ul>
           </li>
-          
+
+          <li *ngIf="isAuthenticated()" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kullanıcı
+            </a>
+            <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a routerLink="/profile" class="dropdown-item" href="#">
+                Profili Düzenle
+              </a></li>
+              <li><a (click)="out()" class="dropdown-item" href="#">Çıkış yap</a></li>
+            </ul>
+          </li>
+
+
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Destek ve İletişim</a>
           </li>
