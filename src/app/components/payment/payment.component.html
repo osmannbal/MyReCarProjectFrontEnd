@@ -1,0 +1,95 @@
+<!-- <h2 class="text-center" class="container">Ödeme</h2>
+<div class="input-group mb-3 row-6" class="container">
+  <span class="input-group-text">Kart Numarası</span>
+  <input type="text" class="form-control" />
+</div>
+<div class="input-group mb-3 row-6" class="container">
+  <span class="input-group-text">Kartın Sahibi</span>
+  <input type="text" class="form-control" />
+</div>
+<div class="input-group mb-3 row-6" class="container">
+  <span class="input-group-text">Güvenlik Kodu</span>
+  <input type="text" class="form-control" />
+</div>
+<div class="input-group mb-3 row-6" class="container">
+  <span class="input-group-text">Son Kullanım Tarihi</span>
+  <input type="text" class="form-control" />
+</div>
+<div class="card-body" class="container">
+<button type="button" class="btn btn-danger">Onayla</button>
+</div> -->
+
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Ödeme</h5></div>
+      <div class="card-body">
+        <form [formGroup]="paymentForm">
+          <div class="mb-3">
+            <span class="input-group-text">Kart Numarası</span>
+            <div class="form-group">
+              <input
+                type="text"
+                id="cardNumber"
+                formControlName="cardNumber"
+                class="form-control"
+                placeholder="Kart numarası"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="input-group-text">Kart sahibinin adı soyadı</span>
+            <div class="form-group">
+              <input
+                type="text"
+                id="cardHolderName"
+                formControlName="cardHolderName"
+                class="form-control"
+                placeholder="Ad Soyad"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="input-group-text">Kartın son kullanma ayı</span>
+            <div class="form-group">
+              <input
+                type="number"
+                id="monthOfExp"
+                formControlName="monthOfExp"
+                class="form-control"
+                placeholder="Ay"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="input-group-text">Kartın son kullanma yılı</span>
+            <div class="form-group">
+              <input
+                type="number" 
+                id="yearOfExp"
+                formControlName="yearOfExp"
+                class="form-control"
+                placeholder="Yıl"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="input-group-text">Güvenlik Kodu</span>
+            <div class="form-group">
+              <input
+                type="number"
+                id="cVV"
+                formControlName="cVV"
+                class="form-control"
+                placeholder="CVV"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-danger" (click)="pay()" >Onayla</button>
+      </div>
+    </div>
+  </div>
+</div>

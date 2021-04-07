@@ -1,9 +1,19 @@
 <!-- <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div> -->
+
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Ürün Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control"
+    id="filterText" placeholder="Arama ifadesi giriniz.">
+  </div>
   
+  <div *ngIf="filterText" class="alert alert-danger" >
+    {{filterText}} aradınız
+  </div>
+
 <h2 class="text-center">Araba Listesi</h2>
-  <table class="table">
+  <table class="table table-bordered">
       <thead>
         <tr>
             <th>Id</th>
@@ -11,21 +21,30 @@
             <th>Marka</th>
             <th>Renk</th>
             <th>Günlük Fiyat</th>
+            <th>Kdv'li Günlük Fiyat</th>
             <th>Model Yılı</th>
             <th>Özellikler</th>
         </tr>
       </thead>
-      <tr *ngFor="let details of cars"
-          >
-          <td>{{details.carId}}</td>
-          <td>{{details.carName}}</td>
-          <td>{{details.brandName}}</td>
-          <td>{{details.colorName}}</td>
-          <td>{{details.dailyPrice}}</td>
-          <td>{{details.modelYear}}</td>
-          <td>{{details.description}}</td>
+      <tbody>
+        <tr *ngFor="let cardetail of carDetails | filterPipe:filterText ">
+          <td>{{cardetail.carId}}</td>
+          <td>{{cardetail.carName}}</td>
+          <td>{{cardetail.brandName}}</td>
+          <td>{{cardetail.colorName}}</td>
+          <td>{{cardetail.dailyPrice | currency:'₺'}}</td>
+          <td>{{cardetail.dailyPrice | vatAdded:18 | currency:'₺'}}</td>
+          <td>{{cardetail.modelYear}}</td>
+          <td>{{cardetail.description}}</td>
+          <td *ngIf="rentability">Araç Kiralanmış</td>
+          <td *ngIf="!rentability"><button routerLink="/rentals/add" type="button" class="btn btn-danger">Kirala</button></td>
           <div class="card-body">
-          <button routerLink="/cars/car-detail/{{details.carId}}" type="button" class="btn btn-light">Detaylar</button> 
+          <button routerLink="/cars/car-detail/{{cardetail.carId}}" type="button" class="btn btn-light">Detaylar</button></div>
+          <div class="card-body">
+          <button routerLink="/cars/update/{{ cardetail.carId }}" type="button" class="btn btn-light">Düzenle</button> 
         </div>
       </tr>
+      </tbody>
+      
   </table> 
+  

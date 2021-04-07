@@ -6,7 +6,7 @@
   <ul class="list-group">
       <li (click)="clearCurrent()"
         [class]="getAllBrandClass()"
-        routerLink="/cars">
+        routerLink="/cars" class="btn btn-warning">
       Tüm Arabalar</li>
       <li (click)="setCurrentBrand(brand)"
       routerLink="cars/brand/{{brand.brandId}}"

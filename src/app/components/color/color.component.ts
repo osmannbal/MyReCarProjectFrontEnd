@@ -30,7 +30,7 @@ export class ColorComponent implements OnInit {
 
   getAllColorClass(){
     if(!this.currentColor){
-      return "list-group-item active"
+      return "list-group-item btn btn-warning"
     }
     else{
       return "list-group-item"
@@ -43,7 +43,7 @@ export class ColorComponent implements OnInit {
 
   getCurrentColorClass(color:Color){
     if(this.currentColor==color){
-      return "list-group-item active"
+      return "list-group-item btn btn-warning"
     }
     else{
       return "list-group-item"

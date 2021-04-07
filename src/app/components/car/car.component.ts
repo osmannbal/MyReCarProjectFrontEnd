@@ -1,51 +1,78 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
+import { CarDetail } from 'src/app/models/carDetail';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars:Car[]= [];
-  dataLoaded=false;
-  constructor(private carService:CarService,
-    private activatedRoute:ActivatedRoute) { }
+  carDetails: CarDetail[]=[];
+  dataLoaded = false;
+  filterText = '';
+  key='id';
+  reverse=false;
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["brandId"]){
-        this.getCarsByBrand(params["brandId"])
+    this.activatedRoute.params.subscribe((params) => {
+      if(params['brandId']&&params['colorId']){
+        this.getCarsByFilter(params['brandId'],params['colorId']);
       }
-      else if(params["colorId"]){
-        this.getCarsByColor(params["colorId"])
-      }
-      else{
+      else if (params['brandId']) {
+        this.getCarsByBrand(params['brandId']);
+      } else if (params['colorId']) {
+        this.getCarsByColor(params['colorId']);
+      } else {
         this.getCars();
       }
-    })
+    });
   }
 
-  getCars(){
-    this.carService.getCars().subscribe(response=>{
-      this.cars = response.data
+  getCars() {
+    this.carService.getCars().subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded = true;
-    })
+    });
   }
 
-  getCarsByBrand(brandId:number){
-    this.carService.getCarsByBrand(brandId).subscribe(response=>{
-      this.cars = response.data
+  getCarsByBrand(brandId: number) {
+    this.carService.getCarsByBrand(brandId).subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded = true;
-    })
+    });
   }
 
-  getCarsByColor(colorId:number){
-    this.carService.getCarsByBrand(colorId).subscribe(response=>{
-      this.cars = response.data
+  getCarsByColor(colorId: number) {
+    this.carService.getCarsByBrand(colorId).subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded = true;
-    })
+    });
   }
+
+  // addToCart(carDetail:CarDetail) {
+  //   this.toastrService.success('Sepete eklendi', carDetail.carName);
+  //   this.cartService.addToCart(carDetail);
+  // }
+
+  getCarsByFilter(colorId: number, brandId: number) {
+    this.carService.getCarsByFilter(colorId, brandId).subscribe((response) => {
+      this.carDetails = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
+  // sort(key: string){
+  //   this.key = key;
+  //   this.reverse = !this.reverse;
+  // }
 }

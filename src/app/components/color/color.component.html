@@ -8,9 +8,9 @@
     routerLink="/cars">
     Tüm arabalar</li>
     <li (click)="setCurrentColor(color)"
-    routerLink="cars/color/{{color.colorId}}"
     *ngFor="let color of colors"
-    [class]="getCurrentColorClass(color)">
+    [class]="getCurrentColorClass(color)"
+    routerLink="cars/color/{{color.colorId}}">
   {{color.colorName}}</li>
 </ul>
 

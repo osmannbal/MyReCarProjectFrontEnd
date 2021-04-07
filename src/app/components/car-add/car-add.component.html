@@ -1,0 +1,69 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Araba Ekle</h5></div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <div class="mb-3">
+                        <span for="carName" class="input-group-text">Araba</span>
+                        <div class="form-group">
+                            <input type="text" id="carName"
+                            formControlName="carName"
+                            class="form-control"
+                            placeholder="Araba adı"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <span for="brandId" class="input-group-text">Marka</span>
+                        <div class="form-group">
+                            <input type="number" id="brandId"
+                            formControlName="brandId"
+                            class="form-control"
+                            placeholder="Marka"/>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span for="colorId" class="input-group-text">Renk</span>
+                    <div class="form-group">
+                        <input type="number" id="colorId"
+                        formControlName="colorId"
+                        class="form-control"
+                        placeholder="Renk"/>
+                </div>
+            </div>
+                <div class="mb-3">
+                    <span for="modelYear" class="input-group-text">Model</span>
+                    <div class="form-group">
+                        <input type="number" id="modelYear"
+                        formControlName="modelYear"
+                        class="form-control"
+                        placeholder="Model"/>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span for="dailyPrice" class="input-group-text">Günlük Fiyatı</span>
+                    <div class="form-group">
+                        <input type="number" id="dailyPrice"
+                        formControlName="dailyPrice"
+                        class="form-control"
+                        placeholder="Günlük Fiyatı"/>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span for="description" class="input-group-text">Açıklama</span>
+                    <div class="form-group">
+                        <input type="text" id="description"
+                        formControlName="description"
+                        class="form-control"
+                        placeholder="Açıklama"/>
+                </div>
+            </div>
+                </form> 
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-danger" (click)="add()">Ekle</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
