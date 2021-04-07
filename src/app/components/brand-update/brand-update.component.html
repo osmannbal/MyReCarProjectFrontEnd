@@ -1,1 +1,18 @@
-<p>brand-update works!</p>
+
+<div class="card border-warning">
+    <h5 class="card-header">Araç Düzenle</h5>
+    <div class="card-body">
+      <form [formGroup]="brandUpdateForm">
+        <div class="mb-3">
+          <label for="brandName" class="form-label">Marka</label>
+            <div class="col-sm-10">
+                <input type="text" id="brandName" formControlName="brandName" class="form-control">
+            </div>
+        </div>
+        
+        <div class="mb-3">
+          <button (click)="update()" class="btn btn-danger">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
