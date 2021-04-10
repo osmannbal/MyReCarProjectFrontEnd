@@ -29,6 +29,10 @@ export class LocalStorageService {
     return localStorage.getItem("email");
   }
 
+  getUserId(){
+    return localStorage.getItem("userId");
+  }
+
   out(){
     localStorage.clear();
   }

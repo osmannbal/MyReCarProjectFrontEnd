@@ -53,4 +53,25 @@ export class PaymentComponent implements OnInit {
   }
   
 }
+
+saveCard(){
+  if(this.paymentForm.valid){
+  let cardModel = Object.assign({}, this.paymentForm.value);
+  console.log(cardModel);
+  this.paymentService.pay(cardModel).subscribe(response=>{
+    this.toastrService.success(response.message, "Kayıt başarılı")
+  }
+  ,responseError=>{
+    if(responseError.error.ValidationError.length>0){
+      for(let i = 0; i < responseError.error.ValidationError.length; i++){
+        this.toastrService.error(responseError.error.ValidationError[i].ErrorMessage, "Doğrulama hatası")
+      }
+    }
+    
+  })
+}else{
+  this.toastrService.error("Formunuz ekisk", "Dikkat")
+}
+
+}
 }

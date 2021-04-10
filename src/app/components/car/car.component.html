@@ -24,6 +24,7 @@
             <th>Kdv'li Günlük Fiyat</th>
             <th>Model Yılı</th>
             <th>Özellikler</th>
+            <th>Findeks Puan</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +37,7 @@
           <td>{{cardetail.dailyPrice | vatAdded:18 | currency:'₺'}}</td>
           <td>{{cardetail.modelYear}}</td>
           <td>{{cardetail.description}}</td>
+          <td>{{cardetail.findexPoint}}</td>
           <td *ngIf="rentability">Araç Kiralanmış</td>
           <td *ngIf="!rentability"><button routerLink="/rentals/add" type="button" class="btn btn-danger">Kirala</button></td>
           <div class="card-body">

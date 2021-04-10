@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { CarDetail } from 'src/app/models/carDetail';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car',
@@ -20,7 +21,8 @@ export class CarComponent implements OnInit {
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private cartService: CartService
+    private cartService: CartService,
+    private rentalService:RentalService
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +39,12 @@ export class CarComponent implements OnInit {
       }
     });
   }
+
+  // getRentalId(carId:number){
+  //   this.rentalService.getRentalId(carId).subscribe((response)=>{
+  //     this.rent
+  //   })
+  // }
 
   getCars() {
     this.carService.getCars().subscribe((response) => {

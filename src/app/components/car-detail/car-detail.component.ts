@@ -34,11 +34,10 @@ export class CarDetailComponent implements OnInit {
         this.getCarsById(params["carId"])
         this.getCarImagesById(params["carId"])
         this.getRentalId(params['carId'])
+        this.checkAvailability();
       }
       else if(params["image"]){
         this.getImagePath(params["image"])
-      }else{
-        this.checkAvailability();
       }
       
     })

@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseMode';
 import { TokenModel } from '../models/tokenModel';
+import { UserForUpdate } from '../models/userForUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,10 @@ export class AuthService {
     else{
       return false;
     }
+  }
+
+  update(userForUpdate:UserForUpdate){
+    return this.httpClient.post<SingleResponseModel<ResponseModel>>(this.apiUrl+"update", userForUpdate);
   }
 
   

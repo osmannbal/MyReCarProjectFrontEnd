@@ -85,7 +85,26 @@
               />
             </div>
           </div>
+     
         </form>
+        <div class="mb-3">
+          <span class="input-group-text">Kartı kaydedelim mi</span>
+        <div class="form-check">
+          <input class="form-check-input"
+          type="radio" name="exampleRadios"
+          id="exampleRadios1"
+          value="option1" checked>
+          <label class="form-check-label" for="exampleRadios1" (click)="saveCard()">
+            Evet
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <label class="form-check-label" for="exampleRadios2">
+            Hayır
+          </label>
+        </div>
+        </div>
       </div>
       <div class="card-footer">
         <button class="btn btn-fill btn-danger" (click)="pay()" >Onayla</button>

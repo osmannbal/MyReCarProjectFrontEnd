@@ -1,0 +1,27 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Ürün Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control"
+    id="filterText" placeholder="Arama ifadesi giriniz.">
+  </div>
+  
+  <div *ngIf="filterText" class="alert alert-danger" >
+    {{filterText}} aradınız
+  </div>
+
+<h2 class="text-center">Renkler</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Renk</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let colors of colorList | filterPipe:filterText">
+            <td>{{colors.colorId}}</td>
+            <td>{{colors.colorName}}</td>
+            <button routerLink="/colors/update/{{ colors.colorId }}" type="button" class="btn btn-xs btn-warning">Düzenle</button> 
+        </tr>
+        
+    </tbody>
+</table>

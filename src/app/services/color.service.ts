@@ -20,4 +20,14 @@ export class ColorService {
     let newPath = this.apiUrl + "colors/add";
     return this.httpClient.post<ResponseModel>(newPath,color);
   }
+
+  update(color:Color):Observable<ResponseModel>{
+    let newPath=this.apiUrl+"colors/update";
+    return this.httpClient.post<ResponseModel>(newPath, color);
+  }
+
+  delete(color:Color):Observable<ResponseModel>{
+    let newPath = this.apiUrl+"colors/delete";
+    return this.httpClient.post<ResponseModel>(newPath, color);
+  }
 }

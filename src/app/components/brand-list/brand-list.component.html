@@ -1,0 +1,27 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Ürün Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control"
+    id="filterText" placeholder="Arama ifadesi giriniz.">
+  </div>
+  
+  <div *ngIf="filterText" class="alert alert-danger" >
+    {{filterText}} aradınız
+  </div>
+
+<h2 class="text-center">Markalar</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Marka</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let brands of brandList | filterPipe:filterText">
+            <td>{{brands.brandId}}</td>
+            <td>{{brands.brandName}}</td>
+            <button routerLink="/brands/update/{{ brands.brandId }}" type="button" class="btn btn-xs btn-warning">Düzenle</button> 
+        </tr>
+        
+    </tbody>
+</table>
