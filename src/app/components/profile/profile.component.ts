@@ -25,10 +25,9 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(){
-    
-    this.user.firstName = this.localStorageService.getFirstName();
-    this.user.lastName = this.localStorageService.getLastName();
-    this.user.email = this.localStorageService.getEmail();
+    this.user.firstName = this.localStorageService.get("firstName");
+    this.user.lastName = this.localStorageService.get("lastName");
+    this.user.email = this.localStorageService.get("email");
   }
 
   createUserUpdateForm(){
@@ -36,12 +35,13 @@ export class ProfileComponent implements OnInit {
       userId:["",Validators.required],
       firstName:["",Validators.required],
       lastName:["",Validators.required],
-      email:["",Validators.required]
+      email:["",Validators.required],
+      password:["",Validators.required]
     })
   }
 
   update(){
-    // this.userUpdateForm.patchValue({ userId : this.user.userId})
+   this.userUpdateForm.patchValue({ userId : Number(this.localStorageService.get("userId"))})
     if (this.userUpdateForm.valid) {
       let userUpdate = Object.assign({}, this.userUpdateForm.value);
       console.log(userUpdate)

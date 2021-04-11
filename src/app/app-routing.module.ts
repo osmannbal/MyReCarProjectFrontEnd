@@ -11,6 +11,7 @@ import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -23,8 +24,8 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"cars", component:CarComponent},
-  {path:"carDetails/brand/:brandId", component:CarComponent},
-  {path:"carDetails/color/:colorId", component:CarComponent},
+  {path:"cars/brand/:brandId", component:CarComponent},
+  {path:"cars/color/:colorId", component:CarComponent},
   {path:"rentalDetails", component:RentalComponent, canActivate:[LoginGuard]}, 
   {path:"customers", component:CustomerComponent, canActivate:[LoginGuard]},
   {path:"cars/car-detail/:carId", component:CarDetailComponent},
@@ -35,14 +36,15 @@ const routes: Routes = [
   {path:"brands/add", component:BrandAddComponent, canActivate:[LoginGuard]},
   {path:"colors/add", component:ColorAddComponent, canActivate:[LoginGuard]},    
   {path:"rentals/add", component:RentalAddComponent, canActivate:[LoginGuard]}, 
-  {path:"login", component:LoginComponent},    
+  {path:"login", component:LoginComponent},     
   {path:"register", component:RegisterComponent},  
   {path:"profile", component:ProfileComponent}, 
-  {path:"brands/update/:brandId", component:BrandUpdateComponent, canActivate:[LoginGuard]},
+  {path:"brands/update/:brandId", component:BrandUpdateComponent, canActivate:[LoginGuard]}, 
   {path:"brands", component:BrandListComponent},
   {path:"colors/update/:colorId", component:ColorUpdateComponent, canActivate:[LoginGuard]},
-  {path:"colors", component:ColorListComponent} 
-];
+  {path:"colors", component:ColorListComponent}, 
+  {path:"customeradd", component:CustomerAddComponent}    
+]; 
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

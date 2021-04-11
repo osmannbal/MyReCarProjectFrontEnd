@@ -28,8 +28,8 @@ export class NaviComponent implements OnInit {
   }
 
   getUser(){
-    this.user.firstName = this.localStorageService.getFirstName();
-    this.user.lastName = this.localStorageService.getLastName();
+    this.user.firstName = this.localStorageService.get("firstName");
+    this.user.lastName = this.localStorageService.get("lastName");
   }
   
 }

@@ -35,6 +35,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BrandListComponent } from './components/brand-list/brand-list.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     ProfileComponent,
     BrandListComponent,
     ColorListComponent,
-    CreditCardComponent
+    CreditCardComponent,
+    CustomerAddComponent
   ],
   imports: [
     BrowserModule,

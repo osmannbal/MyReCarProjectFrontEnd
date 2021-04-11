@@ -10,7 +10,7 @@
       Tüm Arabalar</li>
       <li (click)="setCurrentBrand(brand)"
       *ngFor="let brand of brands"
-      routerLink="cars/brand/{{brand.brandId}}"
+      routerLink="/cars/brand/{{brand.brandId}}"
       [class]="getCurrentBrandClass(brand)"
       class="card-body">
       
