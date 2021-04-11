@@ -38,8 +38,7 @@
           <td>{{cardetail.modelYear}}</td>
           <td>{{cardetail.description}}</td>
           <td>{{cardetail.findexPoint}}</td>
-          <td *ngIf="rentability">Araç Kiralanmış</td>
-          <td *ngIf="!rentability"><button routerLink="/rentals/add" type="button" class="btn btn-danger">Kirala</button></td>
+          <td><button routerLink="/rentals/add" type="button" class="btn btn-danger">Kirala</button></td>
           <div class="card-body">
           <button routerLink="/cars/car-detail/{{cardetail.carId}}" type="button" class="btn btn-light">Detaylar</button></div>
           <div class="card-body">
