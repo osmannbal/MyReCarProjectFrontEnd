@@ -4,4 +4,5 @@ export interface UserForUpdate{
     firstName:string;
     lastName:string;
     password:string;
+    status:boolean;
 }

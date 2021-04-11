@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
     this.user.firstName = this.localStorageService.get("firstName");
     this.user.lastName = this.localStorageService.get("lastName");
     this.user.email = this.localStorageService.get("email");
+    this.user.password = this.localStorageService.get("password");
   }
 
   createUserUpdateForm(){
@@ -36,7 +37,8 @@ export class ProfileComponent implements OnInit {
       firstName:["",Validators.required],
       lastName:["",Validators.required],
       email:["",Validators.required],
-      password:["",Validators.required]
+      password:["",Validators.required],
+      status:true
     })
   }
 

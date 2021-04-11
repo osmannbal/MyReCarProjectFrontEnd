@@ -11,15 +11,15 @@ import { UserForUpdate } from '../models/userForUpdate';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = "https://localhost:44392/api/auth/";
+  apiUrl = "https://localhost:44392/api/";
   constructor(private httpClient:HttpClient) { }
 
   login(loginModel:LoginModel){
-    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login",loginModel);
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"auth/login",loginModel);
   }
 
   register(registerModel:RegisterModel){
-    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"register",registerModel);
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"auth/register",registerModel);
   }
 
   isAuthenticated(){
@@ -32,7 +32,17 @@ export class AuthService {
   }
 
   update(userForUpdate:UserForUpdate){
-    return this.httpClient.post<SingleResponseModel<ResponseModel>>(this.apiUrl+"update", userForUpdate);
+    return this.httpClient.post<SingleResponseModel<ResponseModel>>(this.apiUrl+"users/update", {
+      user:{
+        'id': userForUpdate.userId,
+        'firstName': userForUpdate.firstName,
+        'lastName': userForUpdate.lastName,
+        'email': userForUpdate.email,
+        'status':userForUpdate.status
+      },
+      password:userForUpdate.password
+    });
+
   }
 
   

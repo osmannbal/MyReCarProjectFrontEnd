@@ -9,8 +9,9 @@
     Tüm arabalar</li>
     <li (click)="setCurrentColor(color)"
     *ngFor="let color of colors"
+    routerLink="/cars/color/{{color.colorId}}"
     [class]="getCurrentColorClass(color)"
-    routerLink="/cars/color/{{color.colorId}}">
+    >
   {{color.colorName}}</li>
 </ul>
 
@@ -19,13 +20,3 @@
 <h5 *ngIf="!currentColor">Tüm arabaları seçtiniz</h5>
 
 
-<ul class="list-group">
-  <li (click)="clearCurrent()"
-    [class]="getAllBrandClass()"
-    routerLink="/cars" class="btn btn-warning">
-  Tüm Arabalar</li>
-  <li (click)="setCurrentBrand(brand)"
-  *ngFor="let brand of brands"
-  routerLink="/cars/brand/{{brand.brandId}}"
-  [class]="getCurrentBrandClass(brand)"
-  class="card-body">
