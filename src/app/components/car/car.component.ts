@@ -20,9 +20,6 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService,
-    private cartService: CartService,
-    private rentalService:RentalService
   ) {}
 
   ngOnInit(): void {
@@ -40,11 +37,7 @@ export class CarComponent implements OnInit {
     });
   }
 
-  // getRentalId(carId:number){
-  //   this.rentalService.getRentalId(carId).subscribe((response)=>{
-  //     this.rent
-  //   })
-  // }
+
 
   getCars() {
     this.carService.getCars().subscribe((response) => {
@@ -61,26 +54,19 @@ export class CarComponent implements OnInit {
   }
 
   getCarsByColor(colorId: number) {
-    this.carService.getCarsByBrand(colorId).subscribe((response) => {
+    this.carService.getCarsByColor(colorId).subscribe((response) => {
       this.carDetails = response.data;
       this.dataLoaded = true;
     });
   }
 
-  // addToCart(carDetail:CarDetail) {
-  //   this.toastrService.success('Sepete eklendi', carDetail.carName);
-  //   this.cartService.addToCart(carDetail);
-  // }
 
-  getCarsByFilter(colorId: number, brandId: number) {
-    this.carService.getCarsByFilter(colorId, brandId).subscribe((response) => {
+  getCarsByFilter(brandId: number, colorId: number) {
+    this.carService.getCarsByFilter(brandId, colorId).subscribe((response) => {
       this.carDetails = response.data;
       this.dataLoaded = true;
     });
   }
 
-  // sort(key: string){
-  //   this.key = key;
-  //   this.reverse = !this.reverse;
-  // }
+
 }

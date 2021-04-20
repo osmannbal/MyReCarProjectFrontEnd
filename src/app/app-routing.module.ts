@@ -43,8 +43,8 @@ const routes: Routes = [
   {path:"brands", component:BrandListComponent},
   {path:"colors/update/:colorId", component:ColorUpdateComponent, canActivate:[LoginGuard]},
   {path:"colors", component:ColorListComponent}, 
-  {path:"customeradd", component:CustomerAddComponent}    
-]; 
+  {path:"customeradd", component:CustomerAddComponent}     
+];  
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
